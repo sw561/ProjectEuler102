@@ -1,0 +1,13 @@
+*.o
+main
+*_test
+*.pyc
+*.auto
+*.d
+*input.txt
+*out.txt
+*.png
+*.swp
+program.py
+test.cpp
+test.h
