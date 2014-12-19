@@ -12,8 +12,11 @@ int main(int argc, char* argv[])
 	else debug = 0;
 //--------------------------------------------------//
 	
-	int data[6] = {1,5,-6,10,0,-3};
+	int data[6] = {-175,41,-421,-714,574,-645};
 
+	for (int i = 0; i<1e5; i++){
+		origin_in_triangle(data);
+	}
 	std::cout << origin_in_triangle(data) << std::endl;
 
 	return 0;

@@ -21,10 +21,17 @@ bool T2()
 	return T(data);
 }
 
+bool T3()
+{
+	int data[6] = {-175,41,-175,-714,574,0};
+	return T(data);
+}
+
 int main()
 {
 	TestSuite s = TestSuite(__FILE__);
 
 	s.test("T1",&T1,true);
 	s.test("T2",&T2,false);
+	s.test("T3",&T3,true);
 }
