@@ -19,8 +19,5 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 	$(CC) -MM $< > $*.d
 
-%_defi.h.auto %_decl.h.auto %_proc.h.auto: %_list.txt
-	python generate.py $<
-
 clean:
 	rm -f *.o $(EXECUTABLE) *_test *.pyc *.auto *.d
