@@ -56,33 +56,23 @@ bool origin_in_triangle(const Triangle& T)
 
 bool side(const Point& A, const Point& B, const Point& C)
 {
+	// For vertical lines (constant x)
 	if (A.x == B.x){
-		return (C.x - A.x) * (0 - A.x) > 0;
+		return (A.x - C.x) * A.x > 0;
 	}
 
+	// For non-vertical lines
+
 	// The line connecting A and B
-	IFDEBUG(std::cout << "Using line: ")
+	IFDEBUG(std::cout << "Using line: " << std::endl)
 	IFDEBUG(A.print())
 	IFDEBUG(B.print())
-	double m = (A.y - B.y)/(float)(A.x - B.x);
-	double c = A.y - m*A.x;
+	float m = (A.y - B.y)/(float)(A.x - B.x);
+	float c = A.y - m*A.x;
 	IFDEBUG(std::cout << "m = " << m << std::endl)
 	IFDEBUG(std::cout << "c = " << c << std::endl)
 
-	return side(m,c,C)*side(m,c)>0;
-}
-
-double side(double m, double c, const Point&C)
-{
-	IFDEBUG(std::cout << "Checking point ")
-	IFDEBUG(C.print())
-	double y_line = m*C.x + c;
-	IFDEBUG(std::cout << y_line << std::endl)
-	return C.y - y_line;
-}
-
-double side(double m, double c)
-{
-	static const Point origin = Point();
-	return side(m,c,origin);
+	// Check that the difference between y-coordinate of the line AB at C.x and C.y
+	// is of the same sign as the y-intercept (i.e. same side as origin)
+	return (m*C.x + c - C.y) * c > 0;
 }

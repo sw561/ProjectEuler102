@@ -5,7 +5,7 @@ short unsigned int debug = 0;
 
 bool T(int * data)
 {
-	Triangle T = Triangle(data);
+	Triangle T(data);
 	return origin_in_triangle(T);
 }
 
